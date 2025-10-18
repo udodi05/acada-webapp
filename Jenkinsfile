@@ -36,7 +36,9 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+                withCredentials([string(credentialsId: 'jfrog_token', variable: 'JFROG_TOKEN')]) {
+                    sh 'mvn -Drepo.pwd="${JFROG_TOKEN}" deploy -s settings.xml'
+                }
             }
         }
     }

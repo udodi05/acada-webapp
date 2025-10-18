@@ -17,6 +17,13 @@ pipeline {
                 git branch: 'main', credentialsId: "${GIT_CREDENTIALS}", url: "${GIT_URL}"
             }
         }
+        stage('Test Code') {
+            steps{
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR-TOKEN')]) {
+                    sh 'mvn sonar:sonar -Dsonar.login=$SONAR-TOKEN}'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean package'

@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage('Code Checkout') {
             steps{
-                git branch: 'main', credentialsId: 'jenkins-pipeline', url: 'https://github.com/udodi05/acada-webapp.git'
+                git branch: 'main', credentialsId: 'jenkins', url: 'https://github.com/udodi05/acada-webapp.git'
             }
         }
     }

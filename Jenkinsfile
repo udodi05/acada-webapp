@@ -14,7 +14,7 @@ pipeline {
         stage('Git checkout') {
             steps {
                 sh 'echo "Checkout git based project"'
-                git branch: 'main', credentialsId: ${GIT_CREDENTIALS}, url: ${GIT_URL}
+                git branch: 'main', credentialsId: "${GIT_CREDENTIALS}", url: "${GIT_URL}"
             }
         }
         stage('Build') {
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: ${TOMCAT_CREDENTIALS}, path: '', url: ${TOMCAT_URL})], contextPath: ${TOMCAT_CONTEXT}, war: 'target/*.war'
+                deploy adapters: [tomcat9(credentialsId: "${TOMCAT_CREDENTIALS}", path: '', url: "${TOMCAT_URL}")], contextPath: "${TOMCAT_CONTEXT}", war: 'target/*.war'
             }
         }
         stage('Archive') {

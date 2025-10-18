@@ -18,5 +18,5 @@ pipeline{
             steps{
                 deploy adapters: [tomcat9(credentialsId: 'tomcat_password', path: '', url: 'http://50.17.14.225:8080/')], contextPath: 'web-app', war: 'target/*.war'
             }
-        }
+    }    }
 }

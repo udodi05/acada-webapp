@@ -15,6 +15,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Deploy') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-password', path: '', url: 'http://54.242.139.174:8080/')], contextPath: 'web-app', war: 'target/*.war'
+            }
+        }
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false

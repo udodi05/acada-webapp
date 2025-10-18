@@ -20,7 +20,7 @@ pipeline {
         stage('Test Code') {
             steps{
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR-TOKEN')]) {
-                    sh 'mvn sonar:sonar -Dsonar.login=$SONAR-TOKEN}'
+                    sh 'mvn sonar:sonar -Dsonar.login=$SONAR-TOKEN'
                 }
             }
         }

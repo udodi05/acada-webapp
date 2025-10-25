@@ -2,12 +2,12 @@
     <servers>
         <server>
             <id>acada-snapshot</id>
-            <username>admin</username>
+            <username>${repo.login}</username>
             <password>${repo.pwd}</password>
         </server>
         <server>
             <id>acada-release</id>
-            <username>admin</username>
+            <username>${repo.login}</username>
             <password>${repo.pwd}</password>
         </server>
     </servers>

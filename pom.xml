@@ -22,7 +22,7 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://34.201.98.169:9000</sonar.host.url>
+		<sonar.host.url>http://100.26.22.234:9000</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>acada-release</id>
 	      <name>ACADA Learning release Nexus Repository</name>
-	      <url>http://52.90.127.147:8082/artifactory/acada-release/</url>
+	      <url>http://54.210.74.82:8081/artifactory/acada-release/</url>
 	    </repository>
 
 	    <snapshotRepository>
 	      <id>acada-snapshot</id>
 	      <name>ACADA Learning snapshot Nexus Repository </name>
-	      <url>http://52.90.127.147:8082/artifactory/acada-snapshot/</url>
+	      <url>http://54.210.74.82:8081/artifactory/acada-snapshot/</url>
 	    </snapshotRepository>
 
 	</distributionManagement>

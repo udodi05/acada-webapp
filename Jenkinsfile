@@ -36,6 +36,20 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: "${TOMCAT_CREDENTIALS}", path: '', url: "${TOMCAT_URL2}")], contextPath: "${TOMCAT_CONTEXT}", war: 'target/*.war'
             }
         }
+        stage('Deploy LoadBalancer'){
+            steps{
+                withCredentials([sshUserPrivateKey(credentialsId: 'aws-haproxy', keyFileVariable: 'SSH-KEY', usernameVariable: 'SSH-USER')]) {
+                    scp haproxy.cfg -i "${SSH-KEY}" "${SSH-USER}@18.209.69.196:/tmp/"
+                    ssh -i "${SSH-KEY}" "${SSH-USER}@18.209.69.196" <<'EOF'
+                    echo "Deploying HAproxy container..."
+                    docker rm haproxy -f >/dev/null 2>&1 || true
+                    docker run -d --name haproxy -v /tmp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro -p 443:80 haproxy:latest
+                    docker ps | grep -i haproxy*
+                    echo "Deploying HAproxy container done"
+                    EOF
+                }
+            }
+        }
         stage('Archive') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus-cred', passwordVariable: 'nexus_password', usernameVariable: 'nexus_username')]) {

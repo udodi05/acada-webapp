@@ -10,9 +10,9 @@ docker network create acada-network || true
 echo "Deploying webapp containers..."
 for i in {1..10}; 
 do
-    docker stop acada-webapp$i || true ; docker rm -f acada-webapp$i || true
-    docker run -d --name acada-webapp$i --network acada-network --hostname acada-webapp$i 3.96.167.201:90/acada-repo/acada-webapp:v1;
-    echo "Deploying webapp$i container done"
+    docker stop acada-webapp-$i || true ; docker rm -f acada-webapp-$i || true
+    docker run -d --name acada-webapp-$i --network acada-network --hostname acada-webapp-$i 3.96.167.201:90/acada-repo/acada-webapp:v1;
+    echo "Deploying webapp-$i container done"
 done
 
 echo "Deploying HAproxy container..."

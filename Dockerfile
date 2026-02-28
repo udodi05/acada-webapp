@@ -1,4 +1,4 @@
-FROM tomcat:9.0
+FROM tomcat:10.1-jdk17
 
 # Copy application
 COPY target/*.war /usr/local/tomcat/webapps/web-app.war

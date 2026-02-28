@@ -1,6 +1,8 @@
 #!/bin/bash
+set -e
 
 echo "Deploying webapp containers..."
+source /home/ubuntu/web-app/.app_env
 echo ${NEXUS_PASSWORD} | docker login 3.96.167.201:90 -u ${NEXUS_USER} --password-stdin
 docker pull 3.96.167.201:90/acada-repo/acada-webapp:v1
 docker create network acada-network || true

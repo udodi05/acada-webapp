@@ -17,6 +17,6 @@ done
 
 echo "Deploying HAproxy container..."
 docker rm haproxy -f >/dev/null 2>&1 || true
-docker run -d --name haproxy --network acada-network -v /opt/docker_config_files/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro -p 9095:80 haproxy:latest
+docker run -d --name haproxy --network acada-network -v ~/web-app/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro -p 9095:80 haproxy:latest
 docker ps | grep -i haproxy*
 echo "Deploying HAproxy container done"

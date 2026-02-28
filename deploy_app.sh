@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Deploying webapp containers..."
+echo ${NEXUS_PASSWORD} | docker login 3.96.167.201:90 -u ${NEXUS_USER} --password-stdin
+docker pull 3.96.167.201:90/acada-repo/acada-webapp:v1
+docker create network acada-network || true
+
+echo "Deploying webapp containers..."
+for i in {1..10}; 
+do
+docker stop acada-webapp$i ; docker rm -f acada-webapp$i || true
+docker run -d --name acada-webapp$i --network acada-network --hostname acada-webapp$i -p 3.96.167.201:90/acada-repo/acada-webapp:v1;
+echo "Deploying webapp$i container done"
+done
+
+echo "Deploying HAproxy container..."
+docker rm haproxy -f >/dev/null 2>&1 || true
+docker run -d --name haproxy --network acada-network -v /opt/docker_config_files/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro -p 9095:80 haproxy:latest
+docker ps | grep -i haproxy*
+echo "Deploying HAproxy container done"

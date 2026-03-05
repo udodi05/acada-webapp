@@ -3,15 +3,15 @@ set -e
 
 echo "Deploying webapp containers..."
 source /home/ubuntu/web-app/.app_env
-echo ${NEXUS_PASSWORD} | docker login 3.96.167.201:90 -u ${NEXUS_USER} --password-stdin
-docker pull 3.96.167.201:90/acada-repo/acada-webapp:v1
+echo ${NEXUS_PASSWORD} | docker login $NEXUS_HOST:90 -u ${NEXUS_USER} --password-stdin
+docker pull $NEXUS_HOST:90/acada-repo/acada-webapp:v1
 docker network create acada-network || true
 
 echo "Deploying webapp containers..."
 for i in {1..10}; 
 do
     docker stop acada-webapp-$i || true ; docker rm -f acada-webapp-$i || true
-    docker run -d --name acada-webapp-$i --network acada-network -v ~/web-app/.app_env:/usr/local/tomcat/.env --hostname acada-webapp-$i 3.96.167.201:90/acada-repo/acada-webapp:v1;
+    docker run -d --name acada-webapp-$i --network acada-network -v ~/web-app/.app_env:/usr/local/tomcat/.env --hostname acada-webapp-$i $NEXUS_HOST:90/acada-repo/acada-webapp:v1;
     echo "Deploying webapp-$i container done"
 done
 

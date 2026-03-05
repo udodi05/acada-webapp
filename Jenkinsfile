@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        labels 'acada-node'
+    }
     tools {
         maven 'mvn3.9'
     }

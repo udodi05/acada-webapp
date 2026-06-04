@@ -36,7 +36,7 @@ INSERT INTO employees (name, email, department, phone, position) VALUES
 ('Jane Smith', 'jane.smith@acadalearning.com', 'Cloud', '+1-587-574-2234', 'Cloud Architect'),
 ('Mike Johnson', 'mike.johnson@acadalearning.com', 'Training', '+1-587-574-2235', 'Training Instructor'),
 ('Mike agbalumo', 'mike.agbalumo@acadalearning.com', 'Training', '+1-587-574-2236', 'Training Instructor'),
-('Onome Acada', 'onome.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager');
-('Emma Acada', 'Emma.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager');
-('Cosmos Acada', 'Cosmos.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager');
-('Chuks Acada', 'Chuks.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager');
+('Onome Acada', 'onome.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager'),
+('Emma Acada', 'Emma.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager'),
+('Cosmos Acada', 'Cosmos.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager'),
+('Chuks Acada', 'Chuks.acada@acadalearning.com', 'HR', '+1-587-574-2237', 'HR Manager')
